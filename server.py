@@ -1,12 +1,11 @@
 from flask import Flask, Response, request, send_file
-import re
 from datetime import datetime
-import os
+import os, threading, re
 
 #   !!!  CONFIGURATION  !!!
 server_port = 5000         # The port to run the server on
 server_debug = False       # Whether to run the server in debug mode
-play_sound = False         # Whether to play an alarm sound if a request is triggered
+play_sound = True          # Whether to play an alarm sound if a request is triggered
 max_id_length = 5          # Max characters in a pixel id, for easy-of-use keep it at 5
 
 app = Flask(__name__)
@@ -29,7 +28,7 @@ def pixel(pid):
     print(f'{request.remote_addr} got caught onto the hook')
     
     if play_sound:
-       os.startfile('alarm.wav')
+       threading.Thread(target=os.startfile, args=('alarm.wav',), daemon=True).start()
        
     return send_file('src/pixel.png')
 
