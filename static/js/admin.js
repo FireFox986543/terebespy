@@ -249,11 +249,15 @@ function createPixel() {
             const textP = document.getElementById('pixel-error-text');
             const errorContainer = document.getElementById('pixel-error');
             errorContainer.classList.remove('hidden');
+            const errorTitle = errorContainer.querySelector('.title');
 
-            if (!ok)
+            if (!ok) {
                 textP.textContent = `${text} (${code})`;
+                errorTitle.innerHTML = `<strong>Error:</strong><br>`;
+            }
             else {
                 textP.textContent = 'Pixel successfully created!';
+                errorTitle.innerHTML = `<strong>Success:</strong><br>`;
                 requestLogs();
             }
 

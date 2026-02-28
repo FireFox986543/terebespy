@@ -30,11 +30,11 @@
                     <input type="submit" value="Login">
                 </div>
                 {% if error %}
-                <div class="row">
-                    <p class="error">
+                <div class="row error">
+                    <span>
                         <span class="title"><strong>Error:</strong><br></span>
                         <span>{{ error }}</span>
-                    </p>
+                    </span>
                 </div>
                 {% endif %}
             </form>

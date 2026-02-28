@@ -34,7 +34,7 @@ What would be the point for tracking pixels, if only you can access it? So this 
 >[!NOTE]
 > Example for private ips: `http://192.168.1.20:5000`,
 >
-> And for the public ones: `http://12.234.156.178:5000`
+> And for the public ones: `http://123.234.156.178:5000`
 
 And that's it. You have set up the server that you could use for whatever purposes you like
 
@@ -60,3 +60,15 @@ This happens when you try to enter a server port that contains anything besides 
 This usually happens if you entered in a url that has a pixel it not yet registered in the server.
 
 **Make sure you have typed it in correctly.** Or create a new pixel with that id.
+### Nothing loads in when visiting a pixel
+This is a common user error. If you copy the pixel's link from the page, but you access that page from `localhost` or your private ip, then for someone outside your LAN will not have access to it.
+
+**So make sure if you copy it with the button - you must replace it with the public ip**
+
+>[!NOTE]
+> **Example:**
+>
+> You copied the link: `http://192.168.1.20:5000/pixel.png?id=test`
+> Then you should replace it to include you public ip: `http://123.234.156.178:5000/pixel.png?id=test`
+
+That's it for now. I may expand this and the project later.

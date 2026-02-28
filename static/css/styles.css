@@ -156,6 +156,12 @@ form .row input[type='submit'] {
     border-radius: 12px;
 }
 
+.error .title,
+.success .title,
+.warn .title {
+    text-transform: uppercase;
+}
+
 .success { --color: 103, 179, 27; }
 .warn { --color: 198, 172, 22; }
 
