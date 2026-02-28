@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% set title = "Login" %}
+    {% include 'metas.html' %}
+    <meta name="description" content="A simple, yet effective tool to capture image requests for whatever purposes you like, aka tracking-pixel or pixel tracker.">
+    <meta name="keywords" content="pixel, track, trace, tracking, image, spy, tool, osint, github, open, source, stalk, time, ip">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="TerebeSPY">
+</head>
+<body>
+    <main>
+        <div id="login-panel">
+            <form action="/" method="post">
+                <div class="header">
+                    <img src="{{ url_for('static', filename='icon.png') }}" alt="Logo">
+                    <h1>TerebeSPY</h1>
+                    <div style="height: 100%; aspect-ratio: 1 / 1;"></div>
+                </div>
+                <h3 style="margin-bottom: 32px;">Login to admin account</h3>
+                <div class="row">
+                    <label for="username">User</label>
+                    <input type="text" name="username" id="username" class="textfield mono" required value="{{ username|default('') }}" autocomplete="username">
+                </div>
+                <div class="row">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="textfield mono" required value="{{ password|default('') }}" autocomplete="current-password">
+                </div>
+                <div class="row" style="margin-top: 40px;">
+                    <input type="submit" value="Login">
+                </div>
+                {% if error %}
+                <div class="row">
+                    <p class="error">
+                        <span class="title"><strong>Error:</strong><br></span>
+                        <span>{{ error }}</span>
+                    </p>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% set title = "Admin" %}
+    {% include 'metas.html' %}
+</head>
+<body>
+    <main class="panels">
+        <div class="left-panel">
+            <div class="header">
+                <img src="{{ url_for('static', filename='icon.png') }}" alt="Logo">
+                <h1>TerebeSPY</h1>
+            </div>
+            <div class="button-list">
+                {% set active = 0 %}
+                {% include 'nav.html' %}
+            </div>
+        </div>
+        <div class="panel-cont">
+            <div id="logs-panel" class="panel">
+                <h1>Logs</h1>
+                <div class="log-btns">
+                    <button type="button" class="tool-btn" onclick="newPixel();"><i class="fa fa-plus"></i> New pixel</button>
+                    <button type="button" class="tool-btn" onclick="requestLogs();"><i class="fa fa-arrow-rotate-left"></i> Refresh</button>
+                </div>
+                <div id="log-cont">
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="pixel-modal" class="modal hidden">
+        <div class="modal-box">
+            <h1>Create new pixel</h1>
+            <form action="#" style="min-height: 320px; border: 0;">
+                <div class="row">
+                    <label for="pixel-id">Pixel id</label>
+                    <input type="text" id="pixel-id" class="textfield mono" placeholder="Enter pixel id here" required oninput="updatePixelHref();" maxlength="20">
+                    <div class="tooltip" style="margin-left: 16px; color: var(--muted);" tooltip-text="A unique pixel id that would identify one specific target."><i class="far fa-circle-info"></i></div>
+                </div>
+                <div class="row" id="pixel-href-container">
+                    <button style="margin-right: 6px; margin-left: 6px;" type="button" onclick="copyNewPixelID(false);" class="tooltip tooltip tool-btn" tooltip-text="Copy link"><i class="fa fa-copy"></i></button>
+                    <button type="button" onclick="copyNewPixelID(true);" class="tooltip tooltip tool-btn" tooltip-text="Copy HTML image"><i class="fa fa-images"></i></button>
+                    <span id="pixel-href" style="font-size: .8rem; color: var(--muted); margin-left: 20px;"></span>
+                </div>
+                <div class="row hidden" id="pixel-invalid-container">
+                    <span style="font-size: .8rem; color: var(--red); text-align: center; width: 100%;">Pixel ID contains invalid characters!</span>
+                </div>
+                <div style="flex-grow: 1;"></div>
+                <div class="row hidden" id="pixel-error">
+                    <span>
+                        <span class="title"><strong>Error:</strong><br></span>
+                        <span id="pixel-error-text"></span>
+                    </span>
+                </div>
+                <div class="row">
+                    <button type="button" class="button" onclick="createPixel();" id="create-pixel-btn" disabled><i class="fa fa-plus"></i> Create pixel</button>
+                    <button type="button" class="button tool-btn bigger" onclick="closePixelModal();" style="margin-left: 24px;"><i class="fa fa-ban"></i> Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <script>
+        requestLogs();
+    </script>
+</body>
+</html>

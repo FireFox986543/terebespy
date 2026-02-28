@@ -1,0 +1,8 @@
+{
+    "server_port": "5000",
+    "server_debug": false,
+    "play_sound": false,
+    "admin_username": "admin",
+    "password_salt": "mke5OkmO7Zle",
+    "password_hash": "a257b4d9117094b47397ee0acc87c64ad8900a07dcaf561592ea133ece7401bf"
+}

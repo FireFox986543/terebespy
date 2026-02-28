@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% set title = "Security" %}
+    {% include 'metas.html' %}
+</head>
+
+<body>
+    <main class="panels">
+        <div class="left-panel">
+            <div class="header">
+                <img src="{{ url_for('static', filename='icon.png') }}" alt="Logo">
+                <h1>TerebeSPY</h1>
+            </div>
+            <div class="button-list">
+                {% set active = 1 %}
+                {% include 'nav.html' %}
+            </div>
+        </div>
+        <div class="panel-cont">
+            <div id="security-panel" class="panel">
+                <h1>Security</h1>
+                {% if config['server_debug'] %}
+                <div class="warn" style="margin-bottom: 20px;">
+                    <span>
+                        <span class="title"><strong>Warning:</strong><br></span>
+                        <span>Having the server id <strong>debug mode</strong> could pose a potential risk if exposed to the internet!</span>
+                        <span style="color: var(--muted); font-size: .8rem;"><br>You shouldn't enable debug mode unless you're actively making developments!</span>
+                    </span>
+                </div>
+                {% endif %}
+                <form action="/config" method="post">
+                    <h3 style="text-align: left; margin-top: 0;">Server settings</h3>
+                    <div class="row">
+                        <label for="server_port">Server port</label>
+                        <input type="text" name="server_port" id="server_port" class="textfield mono" required value="{{ config['server_port'] }}">
+                        <div class="tooltip" style="margin-left: 16px; color: var(--muted);" tooltip-text="The port the server is opened to."><i class="far fa-circle-info"></i></div>
+                    </div>
+                    <div class="row">
+                        <label for="server_debug">Server debug</label>
+                        <div style="flex-grow: 1;">
+                            <input type="checkbox" name="server_debug" id="server_debug" {{ "checked" if config['server_debug'] else '' }}>
+                        </div>
+                        <div class="tooltip" style="margin-left: 16px; color: var(--muted);" tooltip-text="Whether to run the flask server in debug mode. IMPORTANT: disable this unless doing active development!"><i class="far fa-circle-info"></i></div>
+                    </div>
+                    <div class="row">
+                        <label for="play_sound">Play sound</label>
+                        <div style="flex-grow: 1;">
+                            <input type="checkbox" name="play_sound" id="play_sound" {{ "checked" if config['play_sound'] else '' }}>
+                        </div>
+                        <div class="tooltip" style="margin-left: 16px; color: var(--muted);" tooltip-text="When a trigger is hit, should the server play an alarm. It might get annoying if there's too much traffic!"><i class="far fa-circle-info"></i></div>
+                    </div>
+                    <h3 style="margin-top: 32px; text-align: left;">User settings</h3>
+                    <div class="row">
+                        <label for="admin_username">Username</label>
+                        <input type="text" name="admin_username" id="admin_username" class="textfield mono" required autocomplete="username" value="{{ config['admin_username'] }}">
+                        <div class="tooltip" style="margin-left: 16px; color: var(--muted);" tooltip-text="The username required for login."><i class="far fa-circle-info"></i></div>
+                    </div>
+                    <div class="row">
+                        <label for="password">New password</label>
+                        <input type="text" name="password" id="password" class="textfield mono" autocomplete="new-password">
+                        <div class="tooltip" style="margin-left: 16px; color: var(--muted);" tooltip-text="Set a new password, otherwise leave it empty."><i class="far fa-circle-info"></i></div>
+                    </div>
+                    <div class="row" style="margin-top: 40px;">
+                        <input type="submit" value="Save changes">
+                    </div>
+                    {% if error %}
+                    <div class="row">
+                        <p class="error">
+                            <span class="title"><strong>Error:</strong><br></span>
+                            <span>{{ error }}</span>
+                        </p>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+
+</html>
