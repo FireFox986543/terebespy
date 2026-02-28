@@ -69,6 +69,8 @@ This is a common user error. If you copy the pixel's link from the page, but you
 > **Example:**
 >
 > You copied the link: `http://192.168.1.20:5000/pixel.png?id=test`
+>
 > Then you should replace it to include you public ip: `http://123.234.156.178:5000/pixel.png?id=test`
 
+### Most importantly, ENJOY
 That's it for now. I may expand this and the project later.
