@@ -9,7 +9,7 @@
 ## II. Usage
 ### 1. Basic setup
 - Once you run the server, it can be accesed under the `http://localhost:5000` url
-- **By default the server starts on the `5000` port, but you can change this later in this section
+- By default the server starts on the `5000` port, but you can change this later in this section
 - After visiting the site you're required to log in
 - **The default user is `admin` with the password: `terebespy`**
 - By clicking on the security tab on the left side you can change the password and the server port too
